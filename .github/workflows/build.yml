@@ -1,4 +1,4 @@
-name: CI
+name: Build
 
 on: [push]
 
@@ -7,7 +7,7 @@ env:
 
 jobs:
   ci:
-    name: ci-${{matrix.os}}
+    name: build-${{matrix.os}}
 
     runs-on: ${{ matrix.os }}
     strategy:
