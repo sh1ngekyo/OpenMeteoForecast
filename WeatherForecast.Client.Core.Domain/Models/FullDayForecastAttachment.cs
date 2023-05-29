@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using WeatherForecast.Client.Core.Domain.Models.Enums;
+
 namespace WeatherForecast.Client.Core.Domain.Models
 {
-    internal class FullDayForecastAttachment
+    public class FullDayForecastAttachment : Attachment
     {
+        public (DateTime Time, double Temperature, WeatherCode WeatherCode)[] DailyForecast { get; set; }
     }
 }

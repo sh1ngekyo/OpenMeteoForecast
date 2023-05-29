@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 using WeatherForecast.Client.Core.Domain.Models.Enums;
 
-namespace WeatherForecast.Client.Core.Domain.Models
+namespace WeatherForecast.Client.Core.Application.Interfaces
 {
-    public class UserState
+    public interface IStateStrategy
     {
-        public long UserId { get; set; }
-        public StateType StateType { get; set; }
+        IState CreateState(StateType stateType);
     }
 }

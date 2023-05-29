@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Client.Core.Domain.Models.Enums
 {
-    internal class StateType
+    public enum StateType
     {
+        WaitingForNewMessages,
+        WaitingForLocation,
+        WaitingForTimeSpan,
+        WaitingForTimeInterval
     }
 }

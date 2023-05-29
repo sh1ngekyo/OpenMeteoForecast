@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using WeatherForecast.Client.Core.Domain.Models.Enums;
+
 namespace WeatherForecast.Client.Core.Domain.Models
 {
-    internal class WeekForecastAttachment
+    public class WeekForecastAttachment : Attachment
     {
+        public (DateTime Day, double AvgTemperature, WeatherCode WeatherCode)[] WeeklyForecast { get; set; }
     }
 }

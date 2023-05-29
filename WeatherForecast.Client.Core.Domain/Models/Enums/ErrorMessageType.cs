@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Client.Core.Domain.Models.Enums
 {
-    internal class ErrorMessageType
+    public enum ErrorMessageType
     {
+        None = 0,
+        WeatherServiceUnavaliable,
+        InternalServerError,
+        NotFound,
+        UserAlreadyExist,
+        Unknown,
+        UnknownMessageType,
+        UnknownCommandType,
+        WrongTimeFormat,
     }
 }

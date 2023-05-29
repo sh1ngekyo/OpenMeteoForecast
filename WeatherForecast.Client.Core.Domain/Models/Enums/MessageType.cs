@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Client.Core.Domain.Models.Enums
 {
-    internal class MessageType
+    public enum MessageType
     {
+        RegisterOk,
+        UpdateOk,
+        LocationRequest,
+        ForecastNow,
+        ForecastToday,
+        ForecastNext,
+        ForecastWeek,
+        TimeSpanRequest,
+        TimeSpanRequestOk,
+        TimeIntervalRequest,
+        AlarmOff,
+        WarningsOn,
+        WarningsOff,
+        WarningMessage
     }
 }

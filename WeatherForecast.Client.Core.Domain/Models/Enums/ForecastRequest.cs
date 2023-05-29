@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Client.Core.Domain.Models.Enums
 {
-    internal class ForecastRequest
+    public enum ForecastRequest
     {
+        Now,
+        Day,
+        Next,
+        Week
     }
 }

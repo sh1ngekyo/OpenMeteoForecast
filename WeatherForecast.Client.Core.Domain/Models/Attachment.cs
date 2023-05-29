@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Client.Core.Domain.Models
 {
-    internal class Attachment
+    public abstract class Attachment
     {
     }
 }
