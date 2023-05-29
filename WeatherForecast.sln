@@ -47,7 +47,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMeteoRemoteApi", "OpenM
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{4D854910-C9BD-464E-A5FB-EB50659385DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Client.Persistence", "WeatherForecast.Client.Persistence\WeatherForecast.Client.Persistence.csproj", "{E676E312-AF9A-4DEB-B4D0-39F21078C4CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.Client.Persistence", "WeatherForecast.Client.Persistence\WeatherForecast.Client.Persistence.csproj", "{E676E312-AF9A-4DEB-B4D0-39F21078C4CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{885EC2BF-1CFC-48F6-AA7D-46D09606F3B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Client.TelegramBot", "WeatherForecast.Client.TelegramBot\WeatherForecast.Client.TelegramBot.csproj", "{9016A1F8-9B5E-4EF6-BB47-4D059EF304BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +103,10 @@ Global
 		{E676E312-AF9A-4DEB-B4D0-39F21078C4CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E676E312-AF9A-4DEB-B4D0-39F21078C4CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E676E312-AF9A-4DEB-B4D0-39F21078C4CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9016A1F8-9B5E-4EF6-BB47-4D059EF304BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9016A1F8-9B5E-4EF6-BB47-4D059EF304BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9016A1F8-9B5E-4EF6-BB47-4D059EF304BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9016A1F8-9B5E-4EF6-BB47-4D059EF304BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,6 +131,8 @@ Global
 		{058D4AFE-3CE8-48A6-BAA7-075631A522E0} = {25656351-30F6-4F9C-ACCD-AC691FE8F679}
 		{4D854910-C9BD-464E-A5FB-EB50659385DA} = {29439682-B9DF-4567-A614-DE4DE8161D98}
 		{E676E312-AF9A-4DEB-B4D0-39F21078C4CA} = {4D854910-C9BD-464E-A5FB-EB50659385DA}
+		{885EC2BF-1CFC-48F6-AA7D-46D09606F3B4} = {29439682-B9DF-4567-A614-DE4DE8161D98}
+		{9016A1F8-9B5E-4EF6-BB47-4D059EF304BD} = {885EC2BF-1CFC-48F6-AA7D-46D09606F3B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {093AA8BE-DBE3-40B2-BAD5-F9D7EECA7884}

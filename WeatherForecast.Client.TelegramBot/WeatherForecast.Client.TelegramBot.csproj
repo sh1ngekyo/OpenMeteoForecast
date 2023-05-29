@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WeatherForecast.Client.Core.Application\WeatherForecast.Client.Core.Application.csproj" />
+    <ProjectReference Include="..\WeatherForecast.Client.Core.Domain\WeatherForecast.Client.Core.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
