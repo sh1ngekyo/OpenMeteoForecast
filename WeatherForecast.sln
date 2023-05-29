@@ -45,6 +45,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRemoteApi", "UserRemote
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenMeteoRemoteApi", "OpenMeteoRemoteApi\OpenMeteoRemoteApi.csproj", "{058D4AFE-3CE8-48A6-BAA7-075631A522E0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{4D854910-C9BD-464E-A5FB-EB50659385DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Client.Persistence", "WeatherForecast.Client.Persistence\WeatherForecast.Client.Persistence.csproj", "{E676E312-AF9A-4DEB-B4D0-39F21078C4CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +95,10 @@ Global
 		{058D4AFE-3CE8-48A6-BAA7-075631A522E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{058D4AFE-3CE8-48A6-BAA7-075631A522E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{058D4AFE-3CE8-48A6-BAA7-075631A522E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E676E312-AF9A-4DEB-B4D0-39F21078C4CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E676E312-AF9A-4DEB-B4D0-39F21078C4CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E676E312-AF9A-4DEB-B4D0-39F21078C4CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E676E312-AF9A-4DEB-B4D0-39F21078C4CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +121,8 @@ Global
 		{798E74BA-5485-4012-89FD-8E385EB30699} = {A2898D7C-F702-41E0-891B-2345F2BA17B3}
 		{EEA5CDF5-67A3-4796-99F6-9D833FA62CF5} = {25656351-30F6-4F9C-ACCD-AC691FE8F679}
 		{058D4AFE-3CE8-48A6-BAA7-075631A522E0} = {25656351-30F6-4F9C-ACCD-AC691FE8F679}
+		{4D854910-C9BD-464E-A5FB-EB50659385DA} = {29439682-B9DF-4567-A614-DE4DE8161D98}
+		{E676E312-AF9A-4DEB-B4D0-39F21078C4CA} = {4D854910-C9BD-464E-A5FB-EB50659385DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {093AA8BE-DBE3-40B2-BAD5-F9D7EECA7884}
