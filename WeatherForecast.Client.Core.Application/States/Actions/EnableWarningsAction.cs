@@ -9,6 +9,7 @@ using UserRemoteApi.Interfaces;
 using WeatherForecast.Client.Core.Domain.Models.Enums;
 
 using WeatherForecast.Client.Core.Domain.Models;
+using UserRemoteApi.Commands.UpdateUser;
 
 namespace WeatherForecast.Client.Core.Application.States.Actions
 {

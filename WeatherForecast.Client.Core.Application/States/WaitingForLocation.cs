@@ -4,6 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Telegram.Bot.Types;
+using UserRemoteApi.Interfaces;
+using WeatherForecast.Client.Core.Application.Interfaces;
+using WeatherForecast.Client.Core.Application.States.Actions;
+using WeatherForecast.Client.Core.Domain.Models.Enums;
+using WeatherForecast.Client.Core.Domain.Models;
+using UserRemoteApi.Queries.GetUser;
+
 namespace WeatherForecast.Client.Core.Application.States
 {
     public class WaitingForLocation : IState

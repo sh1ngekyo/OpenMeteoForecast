@@ -9,14 +9,15 @@ using Telegram.Bot.Types;
 using UserRemoteApi.Commands.UpdateUser;
 using UserRemoteApi.Interfaces;
 using WeatherForecast.Client.Core.Domain.Models;
+using WeatherForecast.Client.Core.Domain.Models.Enums;
 
 namespace WeatherForecast.Client.Core.Application.States.Actions
 {
-    public class DisableWarningsAction
+    public class RemoveAlarmAction
     {
         private readonly IUserManageService _userManageService;
 
-        public DisableWarningsAction(IUserManageService userManageService)
+        public RemoveAlarmAction(IUserManageService userManageService)
         {
             _userManageService = userManageService;
         }
@@ -27,11 +28,7 @@ namespace WeatherForecast.Client.Core.Application.States.Actions
                  new UpdateUserCommand
                  {
                      Id = message.Chat.Id,
-                     WarningsStartTime = new UserRemoteApi.Models.Time()
-                     {
-                         Value = null
-                     },
-                     WarningsEndTime = new UserRemoteApi.Models.Time()
+                     Alarm = new UserRemoteApi.Models.Time()
                      {
                          Value = null
                      }
@@ -40,7 +37,7 @@ namespace WeatherForecast.Client.Core.Application.States.Actions
             {
                 Result = new OutputMessage()
                 {
-                    Response = MessageType.WarningsOff
+                    Response = MessageType.AlarmOff
                 },
                 Error = response.Error
             };
