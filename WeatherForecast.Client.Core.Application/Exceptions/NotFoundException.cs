@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Client.Core.Application.Exceptions
 {
-    internal class NotFoundException
+    public class NotFoundException : Exception
     {
+        public NotFoundException(string name, long id) : base($"Entity '{name}' with Id: '{id}' not found and has no state.") { }
     }
 }
