@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace OpenMeteoRemoteApi.Models
 {
-    internal class WeatherRequest
+    public class WeatherRequest
     {
+        public Location Location { get; set; }
+        public bool Details { get; set; } = false;
+        public int DaysInterval { get; set; } = 1;
     }
 }
