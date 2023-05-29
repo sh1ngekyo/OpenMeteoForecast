@@ -14,6 +14,8 @@ using WeatherForecast.Client.Core.Domain.Models.Enums;
 using WeatherForecast.Client.Core.Domain.Models.Notifications;
 
 using WeatherForecast.Client.Core.Domain.Models;
+using UserRemoteApi.Models;
+using WeatherForecast.Client.Core.Application.Extensions;
 
 namespace WeatherForecast.Client.Core.Application.Notifications
 {
