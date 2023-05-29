@@ -37,9 +37,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{294396
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A2898D7C-F702-41E0-891B-2345F2BA17B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Client.Core.Domain", "WeatherForecast.Client.Core.Domain\WeatherForecast.Client.Core.Domain.csproj", "{8DDD26E8-9418-450D-B449-F2BCFC77530C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.Client.Core.Domain", "WeatherForecast.Client.Core.Domain\WeatherForecast.Client.Core.Domain.csproj", "{8DDD26E8-9418-450D-B449-F2BCFC77530C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Client.Core.Application", "WeatherForecast.Client.Core.Application\WeatherForecast.Client.Core.Application.csproj", "{798E74BA-5485-4012-89FD-8E385EB30699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.Client.Core.Application", "WeatherForecast.Client.Core.Application\WeatherForecast.Client.Core.Application.csproj", "{798E74BA-5485-4012-89FD-8E385EB30699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserRemoteApi", "UserRemoteApi\UserRemoteApi.csproj", "{EEA5CDF5-67A3-4796-99F6-9D833FA62CF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{798E74BA-5485-4012-89FD-8E385EB30699}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{798E74BA-5485-4012-89FD-8E385EB30699}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{798E74BA-5485-4012-89FD-8E385EB30699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEA5CDF5-67A3-4796-99F6-9D833FA62CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA5CDF5-67A3-4796-99F6-9D833FA62CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA5CDF5-67A3-4796-99F6-9D833FA62CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA5CDF5-67A3-4796-99F6-9D833FA62CF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +105,7 @@ Global
 		{A2898D7C-F702-41E0-891B-2345F2BA17B3} = {29439682-B9DF-4567-A614-DE4DE8161D98}
 		{8DDD26E8-9418-450D-B449-F2BCFC77530C} = {A2898D7C-F702-41E0-891B-2345F2BA17B3}
 		{798E74BA-5485-4012-89FD-8E385EB30699} = {A2898D7C-F702-41E0-891B-2345F2BA17B3}
+		{EEA5CDF5-67A3-4796-99F6-9D833FA62CF5} = {25656351-30F6-4F9C-ACCD-AC691FE8F679}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {093AA8BE-DBE3-40B2-BAD5-F9D7EECA7884}

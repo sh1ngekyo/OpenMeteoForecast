@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace UserRemoteApi.Models
 {
-    internal class Time
+    public struct Time
     {
+        public TimeSpan? Value { get; set; }
     }
 }

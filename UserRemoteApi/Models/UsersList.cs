@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace UserRemoteApi.Models
 {
-    internal class UsersList
+    public class UsersList
     {
+        public List<UserViewModel>? Users { get; set; }
     }
 }
