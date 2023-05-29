@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using WeatherForecast.Backend.Core.Domain;
+
 namespace WeatherForecast.Backend.Core.Application.Interfaces
 {
     public interface IUserDbContext
