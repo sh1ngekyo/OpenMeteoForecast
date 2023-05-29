@@ -8,10 +8,12 @@ using OpenMeteoRemoteApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
 using WeatherForecast.Client.Core.Domain.Models;
+using WeatherForecast.Client.Core.Domain.Models.Enums;
 
 namespace OpenMeteoRemoteApi
 {
@@ -40,7 +42,7 @@ namespace OpenMeteoRemoteApi
             {
                 return new Response<WeatherResponse?>()
                 {
-                    Error = TelegramBot.Domain.Models.Enums.ErrorMessageType.WeatherServiceUnavaliable
+                    Error = ErrorMessageType.WeatherServiceUnavaliable
                 };
             }
             return new Response<WeatherResponse?>()

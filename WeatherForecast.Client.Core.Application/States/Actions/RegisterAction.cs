@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 using Telegram.Bot.Types;
 
+using UserRemoteApi.Commands.RegisterUser;
 using UserRemoteApi.Interfaces;
 
 using WeatherForecast.Client.Core.Domain.Models;
+using WeatherForecast.Client.Core.Domain.Models.Enums;
 
 namespace WeatherForecast.Client.Core.Application.States.Actions
 {
