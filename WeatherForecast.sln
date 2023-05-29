@@ -19,7 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.Backend.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{30A20917-0CD6-4E7E-BF1F-71CC448CEB6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Backend.Core.Application", "WeatherForecast.Backend.Core.Application\WeatherForecast.Backend.Core.Application.csproj", "{0438D169-CC97-4F4A-8ABC-C81F31A18511}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.Backend.Core.Application", "WeatherForecast.Backend.Core.Application\WeatherForecast.Backend.Core.Application.csproj", "{0438D169-CC97-4F4A-8ABC-C81F31A18511}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1F843748-EC80-4C05-B582-1F5A3EB851B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Infrastructure.Persistence", "WeatherForecast.Infrastructure.Persistence\WeatherForecast.Infrastructure.Persistence.csproj", "{10CC43ED-9FE0-4579-97B9-62B0CB3535B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,10 @@ Global
 		{0438D169-CC97-4F4A-8ABC-C81F31A18511}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0438D169-CC97-4F4A-8ABC-C81F31A18511}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0438D169-CC97-4F4A-8ABC-C81F31A18511}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10CC43ED-9FE0-4579-97B9-62B0CB3535B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10CC43ED-9FE0-4579-97B9-62B0CB3535B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10CC43ED-9FE0-4579-97B9-62B0CB3535B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10CC43ED-9FE0-4579-97B9-62B0CB3535B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +59,8 @@ Global
 		{B2853F9E-9536-4E04-B5E0-E14471375C70} = {836CD515-970E-44A2-BC8B-FD1F2817BE4D}
 		{30A20917-0CD6-4E7E-BF1F-71CC448CEB6C} = {7FE7E88C-A0FB-46A0-8049-9BC7DAED9F12}
 		{0438D169-CC97-4F4A-8ABC-C81F31A18511} = {30A20917-0CD6-4E7E-BF1F-71CC448CEB6C}
+		{1F843748-EC80-4C05-B582-1F5A3EB851B1} = {0DCE3D2C-C1E4-4E54-937D-27035F35B5D4}
+		{10CC43ED-9FE0-4579-97B9-62B0CB3535B8} = {1F843748-EC80-4C05-B582-1F5A3EB851B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {093AA8BE-DBE3-40B2-BAD5-F9D7EECA7884}
