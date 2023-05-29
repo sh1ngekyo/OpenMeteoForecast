@@ -1,5 +1,6 @@
 {
   "DbConnection": "Data Source=TelegramBot.Db",
+  "TelegramToken": "",
   "ApiPaths": {
     "Backend": "api/user",
     "OpenMeteo": "v1/forecast?"
