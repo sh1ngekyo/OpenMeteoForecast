@@ -6,9 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherForecast.Client.Core.Application.States.Commands.DeleteUserState
+using WeatherForecast.Client.Core.Domain.Models;
+
+namespace WeatherForecast.Client.Core.Application.States.Queries.GetUserState
 {
-    public class DeleteUserStateCommand : IRequest<Unit>
+    public class GetUserStateQuery : IRequest<UserState>
     {
         public long Id { get; set; }
     }
