@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Telegram.Bot.Types;
+using UserRemoteApi.Interfaces;
+using WeatherForecast.Client.Core.Domain.Models;
+
+namespace WeatherForecast.Client.Core.Application.States.Actions
+{
+    public class DisableWarningsAction
+    {
+        private readonly IUserManageService _userManageService;
+
+        public DisableWarningsAction(IUserManageService userManageService)
+        {
+            _userManageService = userManageService;
+        }
+
+        public async Task<Response<OutputMessage>> Do(Message message, CancellationToken cancellationToken = default)
+        {
+            var response = await _userManageService.HandleAsync(
+                 new UpdateUserCommand
+                 {
+                     Id = message.Chat.Id,
+                     WarningsStartTime = new UserRemoteApi.Models.Time()
+                     {
+                         Value = null
+                     },
+                     WarningsEndTime = new UserRemoteApi.Models.Time()
+                     {
+                         Value = null
+                     }
+                 }, cancellationToken);
+            return new Response<OutputMessage>()
+            {
+                Result = new OutputMessage()
+                {
+                    Response = MessageType.WarningsOff
+                },
+                Error = response.Error
+            };
+        }
+    }
+}
