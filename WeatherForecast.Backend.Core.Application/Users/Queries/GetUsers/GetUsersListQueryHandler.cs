@@ -1,5 +1,9 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+
 using MediatR;
+
+using Microsoft.EntityFrameworkCore;
 
 using System;
 using System.Collections.Generic;
