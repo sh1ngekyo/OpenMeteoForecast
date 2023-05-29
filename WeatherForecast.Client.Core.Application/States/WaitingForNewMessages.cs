@@ -11,6 +11,7 @@ using WeatherForecast.Client.Core.Application.Interfaces;
 using WeatherForecast.Client.Core.Domain.Models.Enums;
 
 using WeatherForecast.Client.Core.Domain.Models;
+using WeatherForecast.Client.Core.Application.States.Actions;
 
 namespace WeatherForecast.Client.Core.Application.States
 {
@@ -68,6 +69,36 @@ namespace WeatherForecast.Client.Core.Application.States
                 case "/register":
                 case "/update":
                     return RequestLocation(context);
+                case "/forecast":
+                    return await new GetForecastAction(
+                        ForecastRequest.Now,
+                        _userManageService,
+                        _weatherApi).Do(message, cancellationToken);
+                case "/forecast_day":
+                    return await new GetForecastAction(
+                        ForecastRequest.Day,
+                        _userManageService,
+                        _weatherApi).Do(message, cancellationToken);
+                case "/forecast_next":
+                    return await new GetForecastAction(
+                        ForecastRequest.Next,
+                        _userManageService,
+                        _weatherApi).Do(message, cancellationToken);
+                case "/forecast_week":
+                    return await new GetForecastAction(
+                        ForecastRequest.Week,
+                        _userManageService,
+                        _weatherApi).Do(message, cancellationToken);
+                case "/alarm_on":
+                    return RequestTime(context);
+                case "/alarm_off":
+                    return await new RemoveAlarmAction(
+                        _userManageService).Do(message, cancellationToken);
+                case "/warnings_on":
+                    return RequestTimeInterval(context);
+                case "/warnings_off":
+                    return await new DisableWarningsAction(
+                        _userManageService).Do(message, cancellationToken);
                 default:
                     return new Response<OutputMessage>()
                     {
