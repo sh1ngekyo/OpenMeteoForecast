@@ -34,6 +34,26 @@ namespace WeatherForecast.Backend.Tests.User.Commands
         }
 
         [Fact]
+        public async Task UpdateUserCommandHandler_SuccessWithTime()
+        {
+            var handler = new UpdateUserCommandHandler(Context);
+
+            var time = TimeSpan.FromMinutes(1);
+
+            await handler.Handle(new UpdateUserCommand
+            {
+                Id = UserContextFactory.UsersID["UserIdForUpdate"],
+                Alarm = new Core.Domain.Time() { Value = time },
+                WarningsStartTime = new Core.Domain.Time() { Value = time },
+                WarningsEndTime = new Core.Domain.Time() { Value = time },
+            }, CancellationToken.None);
+
+            Assert.NotNull(await Context.Users.SingleOrDefaultAsync(User =>
+                User.Id == UserContextFactory.UsersID["UserIdForUpdate"] &&
+                User.AlarmTime == time && User.WarningsStartTime == time && User.WarningsEndTime == time));
+        }
+
+        [Fact]
         public async Task UpdateUserCommandHandler_FailOnWrongId()
         {
             var handler = new UpdateUserCommandHandler(Context);
