@@ -26,12 +26,6 @@ namespace WeatherForecast.Client.Tests.Actions
         [Fact]
         public async Task RegisterActionTests_Success()
         {
-            var command = new RegisterUserCommand()
-            {
-                Id = UserStateContextFactory.UsersID.Values.Max() + 1,
-                Latitude = 12,
-                Longitude = 21,
-            };
             var _userManageService = new Mock<IUserManageService>();
             _userManageService.Setup(
                 _ => _.HandleAsync(It.IsAny<RegisterUserCommand>(), CancellationToken.None))
@@ -42,10 +36,10 @@ namespace WeatherForecast.Client.Tests.Actions
                 });
             _userManageService.Verify();
             var got = await new RegisterAction(_userManageService.Object).Do(
-                new Telegram.Bot.Types.Message()
+                new Message()
                 {
-                    Chat = new Chat() { Id = command.Id },
-                    Location = new Location() { Latitude = command.Latitude, Longitude = command.Longitude }
+                    Chat = new Chat() { Id = UserStateContextFactory.UsersID.Values.Max() + 1 },
+                    Location = new Location() { Latitude = 11, Longitude = 11 }
                 }, CancellationToken.None);
             Assert.NotNull(got);
             Assert.NotNull(got.Result);
