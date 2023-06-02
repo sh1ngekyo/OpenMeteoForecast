@@ -48,7 +48,9 @@ namespace WeatherForecast.Client.Tests.Actions
                     Location = new Location() { Latitude = command.Latitude, Longitude = command.Longitude }
                 }, CancellationToken.None);
             Assert.NotNull(got);
+            Assert.NotNull(got.Result);
             Assert.True(got.Error == Core.Domain.Models.Enums.ErrorMessageType.None);
+            Assert.Equal(Core.Domain.Models.Enums.MessageType.RegisterOk, got.Result!.Response);
         }
     }
 }
