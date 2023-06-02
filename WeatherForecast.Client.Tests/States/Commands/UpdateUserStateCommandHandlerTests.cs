@@ -27,6 +27,7 @@ namespace WeatherForecast.Client.Tests.States.Commands
 
             var user = await Context.UsersStates.SingleOrDefaultAsync(User =>
                 User.UserId == UserStateContextFactory.UsersID["UserIdForUpdate"]);
+            Assert.NotNull(user);
             Assert.Equal(expected, user.StateType);
         }
     }

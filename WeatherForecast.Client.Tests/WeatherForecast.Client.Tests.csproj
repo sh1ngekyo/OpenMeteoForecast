@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="States\Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\WeatherForecast.Client.Persistence\WeatherForecast.Client.Persistence.csproj" />
   </ItemGroup>
 
