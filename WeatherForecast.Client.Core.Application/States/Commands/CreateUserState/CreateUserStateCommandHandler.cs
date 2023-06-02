@@ -12,11 +12,11 @@ using WeatherForecast.Client.Core.Application.Interfaces;
 
 namespace WeatherForecast.Client.Core.Application.States.Commands.CreateUserState
 {
-    public class CreateUserStateHandler : IRequestHandler<CreateUserStateCommand, Domain.Models.UserState>
+    public class CreateUserStateCommandHandler : IRequestHandler<CreateUserStateCommand, Domain.Models.UserState>
     {
         private readonly IUserStateDbContext _context;
 
-        public CreateUserStateHandler(IUserStateDbContext userStateDbContext)
+        public CreateUserStateCommandHandler(IUserStateDbContext userStateDbContext)
         {
             _context = userStateDbContext;
         }

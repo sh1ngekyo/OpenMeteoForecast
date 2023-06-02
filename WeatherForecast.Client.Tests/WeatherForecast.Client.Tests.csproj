@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="States\Commands\" />
     <Folder Include="States\Queries\" />
   </ItemGroup>
 
