@@ -21,17 +21,16 @@ namespace WeatherForecast.Client.Tests.Actions
     {
 
         [Fact]
-        public async Task RegisterActionTests_Success()
+        public async Task UpdateActionTests_Success()
         {
             var _userManageService = new Mock<IUserManageService>();
             _userManageService.Setup(
-                _ => _.HandleAsync(It.IsAny<UpdateUserCommand>(), CancellationToken.None))
+                _ => _.HandleAsync(It.IsAny<UpdateUserCommand>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(
                 new Response<Unit>()
                 {
                     Result = new Unit()
                 });
-            _userManageService.Verify();
             var got = await new UpdateAction(_userManageService.Object).Do(
                 new Message()
                 {
