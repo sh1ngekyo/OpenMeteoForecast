@@ -40,7 +40,7 @@ namespace WeatherForecast.Client.Tests.States
             }
         };
 
-        private IUserContext CreateContext(Func<IUserManageService> userManageServiceSetupBehavior, StateType stateType, Func<IWeatherApiWrapper> weatherApiSetupBehavior = null)
+        private (IState State, IUserContext Context) SetupRequestedObjects(Func<IUserManageService> userManageServiceSetupBehavior, StateType stateType, Func<IWeatherApiWrapper> weatherApiSetupBehavior = null)
         {
             var userManageService = userManageServiceSetupBehavior();
             var weatherApi = weatherApiSetupBehavior is not null ? weatherApiSetupBehavior() : null;
@@ -51,7 +51,8 @@ namespace WeatherForecast.Client.Tests.States
                 new WaitingForTimeSpanFactory(userManageService),
                 new WaitingForTimeIntervalFactory(userManageService),
             }), stateType);
-            return ctx;
+
+            return (new WaitingForLocation(userManageService), ctx);
         }
 
         [Fact]
@@ -79,8 +80,8 @@ namespace WeatherForecast.Client.Tests.States
                     });
                 return _userManageService.Object;
             };
-
-            var response = await CreateContext(userManageServiceSetupBehavior, StateType.WaitingForLocation).Update(_requestMessage);
+            var requestedObjects = SetupRequestedObjects(userManageServiceSetupBehavior, StateType.WaitingForLocation);
+            var response = await requestedObjects.State.Handle(requestedObjects.Context, _requestMessage);
 
             Assert.NotNull(response);
             Assert.NotNull(response.Result);
@@ -106,7 +107,8 @@ namespace WeatherForecast.Client.Tests.States
                 return _userManageService.Object;
             };
 
-            var response = await CreateContext(userManageServiceSetupBehavior, StateType.WaitingForLocation).Update(_requestMessage);
+            var requestedObjects = SetupRequestedObjects(userManageServiceSetupBehavior, StateType.WaitingForLocation);
+            var response = await requestedObjects.State.Handle(requestedObjects.Context, _requestMessage);
 
             Assert.NotNull(response);
             Assert.Null(response.Result);
@@ -131,14 +133,14 @@ namespace WeatherForecast.Client.Tests.States
                 return _userManageService.Object;
             };
 
-            var response = await CreateContext(userManageServiceSetupBehavior, StateType.WaitingForLocation)
-                .Update(new Telegram.Bot.Types.Message()
+            var requestedObjects = SetupRequestedObjects(userManageServiceSetupBehavior, StateType.WaitingForLocation);
+            var response = await requestedObjects.State.Handle(requestedObjects.Context, new Telegram.Bot.Types.Message()
+            {
+                Chat = new Telegram.Bot.Types.Chat()
                 {
-                    Chat = new Telegram.Bot.Types.Chat()
-                    {
-                        Id = 1
-                    }
-                });
+                    Id = 1
+                }
+            });
 
             Assert.NotNull(response);
             Assert.Null(response.Result);
@@ -171,8 +173,8 @@ namespace WeatherForecast.Client.Tests.States
                 return _userManageService.Object;
             };
 
-            var response = await CreateContext(userManageServiceSetupBehavior, StateType.WaitingForLocation)
-                .Update(_requestMessage);
+            var requestedObjects = SetupRequestedObjects(userManageServiceSetupBehavior, StateType.WaitingForLocation);
+            var response = await requestedObjects.State.Handle(requestedObjects.Context, _requestMessage);
 
             Assert.NotNull(response);
             Assert.NotNull(response.Result);
