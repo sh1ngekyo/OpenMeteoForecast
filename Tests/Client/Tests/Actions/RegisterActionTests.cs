@@ -1,6 +1,7 @@
 ﻿using MediatR;
 
-using Moq;
+
+using NSubstitute;
 
 using System;
 using System.Collections.Generic;
@@ -26,16 +27,14 @@ namespace WeatherForecast.Client.Tests.Actions
         [Fact]
         public async Task RegisterActionTests_Success()
         {
-            var _userManageService = new Mock<IUserManageService>();
-            _userManageService.Setup(
-                _ => _.HandleAsync(It.IsAny<RegisterUserCommand>(), CancellationToken.None))
-                .ReturnsAsync(
+            var _userManageService = Substitute.For<IUserManageService>();
+            _userManageService.HandleAsync(Arg.Any<RegisterUserCommand>(), Arg.Any<CancellationToken>())
+                .Returns(
                 new Response<Unit>() 
                 {
                     Result = new Unit() 
                 });
-            _userManageService.Verify();
-            var got = await new RegisterAction(_userManageService.Object).Do(
+            var got = await new RegisterAction(_userManageService).Do(
                 new Message()
                 {
                     Chat = new Chat() { Id = UserStateContextFactory.UsersID.Values.Max() + 1 },

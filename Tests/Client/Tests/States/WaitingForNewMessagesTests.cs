@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Moq;
 
 using System;
 using System.Collections.Generic;
@@ -22,6 +21,7 @@ using Telegram.Bot.Types;
 using WeatherForecast.Client.Core.Application.States.Actions;
 using UserRemoteApi.Queries.GetUser;
 using UserRemoteApi.Commands.UpdateUser;
+using NSubstitute;
 
 namespace WeatherForecast.Client.Tests.States
 {
@@ -148,22 +148,20 @@ namespace WeatherForecast.Client.Tests.States
 
             var requestedObjects = SetupRequestedObjects(() =>
             {
-                var _userManageService = new Mock<IUserManageService>();
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<GetUserQuery>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                var _userManageService = Substitute.For<IUserManageService>();
+                _userManageService.HandleAsync(Arg.Any<GetUserQuery>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<UserViewModel?>()
                     {
                         Result = _userInfo
                     });
-                return _userManageService.Object;
+                return _userManageService;
             }, StateType.WaitingForNewMessages,
             () =>
             {
-                var _weatherApi = new Mock<IWeatherApiWrapper>();
-                _weatherApi.Setup(
-                    _ => _.GetWeatherAsync(It.IsAny<WeatherRequest>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                var _weatherApi = Substitute.For<IWeatherApiWrapper>();
+                _weatherApi.GetWeatherAsync(Arg.Any<WeatherRequest>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<WeatherResponse?>()
                     {
                         Result = new WeatherResponse()
@@ -176,7 +174,7 @@ namespace WeatherForecast.Client.Tests.States
                             }
                         }
                     });
-                return _weatherApi.Object;
+                return _weatherApi;
             });
 
             var response = await requestedObjects.State.Handle(requestedObjects.Context, new Telegram.Bot.Types.Message
@@ -203,15 +201,14 @@ namespace WeatherForecast.Client.Tests.States
 
             var requestedObjects = SetupRequestedObjects(() =>
             {
-                var _userManageService = new Mock<IUserManageService>();
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<UpdateUserCommand>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                var _userManageService = Substitute.For<IUserManageService>();
+                _userManageService.HandleAsync(Arg.Any<UpdateUserCommand>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<Unit>()
                     {
                         Result = new Unit()
                     });
-                return _userManageService.Object;
+                return _userManageService;
             }, StateType.WaitingForNewMessages);
 
             var response = await requestedObjects.State.Handle(requestedObjects.Context, new Telegram.Bot.Types.Message
@@ -238,15 +235,14 @@ namespace WeatherForecast.Client.Tests.States
 
             var requestedObjects = SetupRequestedObjects(() =>
             {
-                var _userManageService = new Mock<IUserManageService>();
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<UpdateUserCommand>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                var _userManageService = Substitute.For<IUserManageService>();
+                _userManageService.HandleAsync(Arg.Any<UpdateUserCommand>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<Unit>()
                     {
                         Result = new Unit()
                     });
-                return _userManageService.Object;
+                return _userManageService;
             }, StateType.WaitingForNewMessages);
 
             var response = await requestedObjects.State.Handle(requestedObjects.Context, new Telegram.Bot.Types.Message

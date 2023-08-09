@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Moq;
 using OpenMeteoRemoteApi.Interfaces;
 
 using System;
@@ -19,6 +18,7 @@ using WeatherForecast.Client.Core.Domain.Models;
 using UserRemoteApi.Queries.GetUser;
 using UserRemoteApi.Models;
 using UserRemoteApi.Commands.UpdateUser;
+using NSubstitute;
 
 namespace WeatherForecast.Client.Tests.States
 {
@@ -47,22 +47,20 @@ namespace WeatherForecast.Client.Tests.States
 
             var userManageServiceSetupBehavior = () =>
             {
-                var _userManageService = new Mock<IUserManageService>();
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<GetUserQuery>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                var _userManageService = Substitute.For<IUserManageService>();
+                _userManageService.HandleAsync(Arg.Any<GetUserQuery>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<UserViewModel?>()
                     {
                         Result = new UserViewModel() { Id = 1 },
                     });
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<UpdateUserCommand>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                _userManageService.HandleAsync(Arg.Any<UpdateUserCommand>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<Unit>()
                     {
                         Result = new Unit()
                     });
-                return _userManageService.Object;
+                return _userManageService;
             };
             var requestedObjects = SetupRequestedObjects(userManageServiceSetupBehavior, StateType.WaitingForTimeSpan);
             var response = await requestedObjects.State.Handle(requestedObjects.Context, new Telegram.Bot.Types.Message()

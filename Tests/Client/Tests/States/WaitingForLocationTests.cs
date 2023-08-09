@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-using Moq;
+using NSubstitute;
 
 using OpenMeteoRemoteApi.Interfaces;
 
@@ -63,22 +63,20 @@ namespace WeatherForecast.Client.Tests.States
 
             var userManageServiceSetupBehavior = () =>
             {
-                var _userManageService = new Mock<IUserManageService>();
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<GetUserQuery>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                var _userManageService = Substitute.For<IUserManageService>();
+                _userManageService.HandleAsync(Arg.Any<GetUserQuery>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<UserViewModel?>()
                     {
                         Error = Core.Domain.Models.Enums.ErrorMessageType.NotFound
                     });
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<RegisterUserCommand>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                _userManageService.HandleAsync(Arg.Any<RegisterUserCommand>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<Unit>()
                     {
                         Result = new Unit()
                     });
-                return _userManageService.Object;
+                return _userManageService;
             };
             var requestedObjects = SetupRequestedObjects(userManageServiceSetupBehavior, StateType.WaitingForLocation);
             var response = await requestedObjects.State.Handle(requestedObjects.Context, _requestMessage);
@@ -96,15 +94,14 @@ namespace WeatherForecast.Client.Tests.States
 
             var userManageServiceSetupBehavior = () =>
             {
-                var _userManageService = new Mock<IUserManageService>();
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<GetUserQuery>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                var _userManageService = Substitute.For<IUserManageService>();
+                _userManageService.HandleAsync(Arg.Any<GetUserQuery>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<UserViewModel?>()
                     {
                         Error = Core.Domain.Models.Enums.ErrorMessageType.InternalServerError
                     });
-                return _userManageService.Object;
+                return _userManageService;
             };
 
             var requestedObjects = SetupRequestedObjects(userManageServiceSetupBehavior, StateType.WaitingForLocation);
@@ -122,15 +119,14 @@ namespace WeatherForecast.Client.Tests.States
 
             var userManageServiceSetupBehavior = () =>
             {
-                var _userManageService = new Mock<IUserManageService>();
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<GetUserQuery>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                var _userManageService = Substitute.For<IUserManageService>();
+                _userManageService.HandleAsync(Arg.Any<GetUserQuery>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<UserViewModel?>()
                     {
                         Error = Core.Domain.Models.Enums.ErrorMessageType.InternalServerError
                     });
-                return _userManageService.Object;
+                return _userManageService;
             };
 
             var requestedObjects = SetupRequestedObjects(userManageServiceSetupBehavior, StateType.WaitingForLocation);
@@ -155,22 +151,20 @@ namespace WeatherForecast.Client.Tests.States
 
             var userManageServiceSetupBehavior = () =>
             {
-                var _userManageService = new Mock<IUserManageService>();
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<GetUserQuery>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                var _userManageService = Substitute.For<IUserManageService>();
+                _userManageService.HandleAsync(Arg.Any<GetUserQuery>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<UserViewModel?>()
                     {
                         Result = new UserViewModel() { Id = 1 }
                     });
-                _userManageService.Setup(
-                    _ => _.HandleAsync(It.IsAny<UpdateUserCommand>(), It.IsAny<CancellationToken>()))
-                    .ReturnsAsync(
+                _userManageService.HandleAsync(Arg.Any<UpdateUserCommand>(), Arg.Any<CancellationToken>())
+                    .Returns(
                     new Response<Unit>()
                     {
                         Result = new Unit()
                     });
-                return _userManageService.Object;
+                return _userManageService;
             };
 
             var requestedObjects = SetupRequestedObjects(userManageServiceSetupBehavior, StateType.WaitingForLocation);

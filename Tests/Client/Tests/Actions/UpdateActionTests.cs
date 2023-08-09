@@ -1,5 +1,6 @@
 ﻿using MediatR;
-using Moq;
+
+using NSubstitute;
 
 using System;
 using System.Collections.Generic;
@@ -23,15 +24,14 @@ namespace WeatherForecast.Client.Tests.Actions
         [Fact]
         public async Task UpdateActionTests_Success()
         {
-            var _userManageService = new Mock<IUserManageService>();
-            _userManageService.Setup(
-                _ => _.HandleAsync(It.IsAny<UpdateUserCommand>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(
+            var _userManageService = Substitute.For<IUserManageService>();
+            _userManageService.HandleAsync(Arg.Any<UpdateUserCommand>(), Arg.Any<CancellationToken>())
+                .Returns(
                 new Response<Unit>()
                 {
                     Result = new Unit()
                 });
-            var got = await new UpdateAction(_userManageService.Object).Do(
+            var got = await new UpdateAction(_userManageService).Do(
                 new Message()
                 {
                     Chat = new Chat() { Id = UserStateContextFactory.UsersID.Values.Max() + 1 },

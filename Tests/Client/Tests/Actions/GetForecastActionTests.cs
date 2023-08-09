@@ -1,5 +1,6 @@
 ﻿using MediatR;
-using Moq;
+
+using NSubstitute;
 
 using OpenMeteoRemoteApi.Interfaces;
 using OpenMeteoRemoteApi.Models;
@@ -37,18 +38,16 @@ namespace WeatherForecast.Client.Tests.Actions
         {
             var expectedResult = MessageType.ForecastNow;
 
-            var _userManageService = new Mock<IUserManageService>();
-            _userManageService.Setup(
-                _ => _.HandleAsync(It.IsAny<GetUserQuery>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(
+            var _userManageService = Substitute.For<IUserManageService>();
+            _userManageService.HandleAsync(Arg.Any<GetUserQuery>(), Arg.Any<CancellationToken>())
+                .Returns(
                 new Response<UserViewModel?>()
                 {
                     Result = _dummyUser
                 });
-            var _weatherApi = new Mock<IWeatherApiWrapper>();
-            _weatherApi.Setup(
-                _ => _.GetWeatherAsync(It.IsAny<WeatherRequest>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(
+            var _weatherApi = Substitute.For<IWeatherApiWrapper>();
+            _weatherApi.GetWeatherAsync(Arg.Any<WeatherRequest>(), Arg.Any<CancellationToken>())
+                .Returns(
                 new Response<WeatherResponse?>()
                 {
                     Result = new WeatherResponse() 
@@ -62,7 +61,7 @@ namespace WeatherForecast.Client.Tests.Actions
                     }
                 });
 
-            var got = await new GetForecastAction(ForecastRequest.Now, _userManageService.Object, _weatherApi.Object).Do(
+            var got = await new GetForecastAction(ForecastRequest.Now, _userManageService, _weatherApi).Do(
                 new Message()
                 {
                     Chat = new Chat() 
@@ -88,16 +87,15 @@ namespace WeatherForecast.Client.Tests.Actions
         {
             var expectedResult = ErrorMessageType.NotFound;
 
-            var _userManageService = new Mock<IUserManageService>();
-            _userManageService.Setup(
-                _ => _.HandleAsync(It.IsAny<GetUserQuery>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(
+            var _userManageService = Substitute.For<IUserManageService>();
+            _userManageService.HandleAsync(Arg.Any<GetUserQuery>(), Arg.Any<CancellationToken>())
+                .Returns(
                 new Response<UserViewModel?>()
                 {
                     Error = ErrorMessageType.NotFound,
                 });
 
-            var got = await new GetForecastAction(ForecastRequest.Now, _userManageService.Object, default!).Do(
+            var got = await new GetForecastAction(ForecastRequest.Now, _userManageService, default!).Do(
                 new Message()
                 {
                     Chat = new Chat()
@@ -120,25 +118,22 @@ namespace WeatherForecast.Client.Tests.Actions
         public async Task GetForecastActionTests_FailForecastNowWhenWeatherServiceUnavaliable()
         {
             var expectedResult = ErrorMessageType.WeatherServiceUnavaliable;
-
-            var _userManageService = new Mock<IUserManageService>();
-            _userManageService.Setup(
-                _ => _.HandleAsync(It.IsAny<GetUserQuery>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(
+            var _userManageService = Substitute.For<IUserManageService>();
+            _userManageService.HandleAsync(Arg.Any<GetUserQuery>(), Arg.Any<CancellationToken>())
+                .Returns(
                 new Response<UserViewModel?>()
                 {
                     Result = _dummyUser
                 });
-            var _weatherApi = new Mock<IWeatherApiWrapper>();
-            _weatherApi.Setup(
-                _ => _.GetWeatherAsync(It.IsAny<WeatherRequest>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(
+            var _weatherApi = Substitute.For<IWeatherApiWrapper>();
+            _weatherApi.GetWeatherAsync(Arg.Any<WeatherRequest>(), Arg.Any<CancellationToken>())
+                .Returns(
                 new Response<WeatherResponse?>()
                 {
                     Error = ErrorMessageType.WeatherServiceUnavaliable,
                 });
 
-            var got = await new GetForecastAction(ForecastRequest.Now, _userManageService.Object, _weatherApi.Object).Do(
+            var got = await new GetForecastAction(ForecastRequest.Now, _userManageService, _weatherApi).Do(
                 new Message()
                 {
                     Chat = new Chat()
