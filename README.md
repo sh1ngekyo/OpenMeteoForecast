@@ -28,25 +28,25 @@ Weather forecast using OpenMeteo API with telegram integration (work in progress
 
 <details> 
   <summary><h2>General structure</h2></summary>
-  <img src="https://github.com/sh1ngekyo/OpenMeteoForecast/blob/structure-change/Docs/diagram.png">
+  <img src="https://github.com/sh1ngekyo/OpenMeteoForecast/blob/master/Docs/diagram.png">
 </details>
 
 <details> 
   <summary><h2>Registration</h2></summary>
-  <img src="https://github.com/sh1ngekyo/OpenMeteoForecast/blob/structure-change/Docs/register.gif" width=25% height=25%>
+  <img src="https://github.com/sh1ngekyo/OpenMeteoForecast/blob/master/Docs/register.gif" width=25% height=25%>
 </details>
 
 <details>  
   <summary><h2>Get weather forecast</h2></summary>
-  <img src="https://github.com/sh1ngekyo/OpenMeteoForecast/blob/structure-change/Docs/forecast.gif" width=25% height=25%>
+  <img src="https://github.com/sh1ngekyo/OpenMeteoForecast/blob/master/Docs/forecast.gif" width=25% height=25%>
 </details>
 
 <details>  
   <summary><h2>Setup alarms</h2></summary>
-  <img src="https://github.com/sh1ngekyo/OpenMeteoForecast/blob/structure-change/Docs/alarms.gif" width=25% height=25%>
+  <img src="https://github.com/sh1ngekyo/OpenMeteoForecast/blob/master/Docs/alarms.gif" width=25% height=25%>
 </details>
 
 <details>  
   <summary><h2>Turn on warnings</h2></summary>
-  <img src="https://github.com/sh1ngekyo/OpenMeteoForecast/blob/structure-change/Docs/warnings.gif" width=25% height=25%>
+  <img src="https://github.com/sh1ngekyo/OpenMeteoForecast/blob/master/Docs/warnings.gif" width=25% height=25%>
 </details>
